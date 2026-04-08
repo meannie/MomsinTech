@@ -32,7 +32,7 @@ Three things:
 ~/.claude/skills/cos/
   └── skill.md                    # The Claude Code skill (your customized version)
 
-<your_cos_dir>/                   # e.g. ~/Desktop/cos/
+<your_cos_dir>/                   # e.g. ~/cos/
   ├── tasks_sync.py               # Pulls Google Tasks → tasks_snapshot.json
   ├── gcal_sync.py                # Pulls Google Calendar → gcal_snapshot.json
   ├── config.yaml                 # Your calendars, timezone (gitignored)

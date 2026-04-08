@@ -11,7 +11,7 @@ Getting `/cos` running on your machine in about 30 minutes.
 
 ## Step 1: Pick your `cos` directory
 
-Choose a directory where the sync scripts and snapshots will live. Annie uses `~/Desktop/python/cos/` but you can put it anywhere stable. We'll call this `<COS_DIR>` for the rest of the guide.
+Choose a directory where the sync scripts and snapshots will live. `~/cos/` works well, but you can put it anywhere stable. We'll call this `<COS_DIR>` for the rest of the guide.
 
 ```bash
 mkdir -p ~/cos
