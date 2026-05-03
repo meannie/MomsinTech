@@ -30,6 +30,18 @@ Use this to evaluate whether a skill file is well-structured and ready for use. 
 - [ ] **Tone specified.** Even if brief — direct? warm? terse? Match the user's communication style.
 - [ ] **Confirmation workflow defined.** For skills that take action (sending emails, creating files), specify when to ask for confirmation vs. proceed autonomously.
 
+## The Living Skill Concept
+
+Skills are not static documentation — they are living systems that evolve as you use them. Every skill should include guidance on how and when to update itself.
+
+A good living skill section specifies:
+- **What should evolve**: current priorities, key people, specific sources/channels, output tweaks based on what works
+- **What should stay stable**: voice/style rules, trigger descriptions, structural format, core workflow logic
+- **How updates happen**: the AI proposes a specific edit; the user confirms; the AI makes the change directly to the skill file. No silent edits. No drifting without consent.
+- **When to watch for drift**: at the end of each run, note if a workstream is finished, a new one is dominating, a person is no longer relevant, or a data source has changed
+
+The goal: every correction the user makes becomes a permanent rule. The skill gets smarter over time without the user needing to maintain a separate document of preferences.
+
 ## Red Flags (fail if any present)
 
 - Contains PII (real email addresses, API keys, phone numbers)
