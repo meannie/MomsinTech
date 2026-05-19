@@ -1,6 +1,8 @@
-# /wr — Work Receipts for Claude Code
+# Work Receipts (/wr)
 
-A Claude Code skill that captures the metrics and outcomes of your work **in real time** — before you forget them.
+Captures the metrics and outcomes of your work **in real time** — before you forget them.
+
+Works in **[Claude.ai](https://claude.ai)** (web/app, no setup required) and **[Claude Code](https://claude.com/claude-code)** (CLI, slash command).
 
 Built and open-sourced by [Annie Tsai](https://annietsai.co) (COO, [Interact](https://tryinteract.com) and [Moms in Tech](https://momsintech.com)).
 
@@ -18,32 +20,39 @@ Most people remember *what* they shipped. They forget the numbers. By the time a
 
 ## What it does
 
-| Command | What it does |
-|---|---|
-| `/wr` or `/wr log` | Capture a new win. Skill prompts for any missing metrics. |
-| `/wr resume` | Format your entries as resume bullets. |
-| `/wr interview` | Format entries as STAR stories for interviews. |
-| `/wr linkedin` | Draft a LinkedIn post or weekly outcomes narrative. |
-| `/wr list` | Show all logged entries. Incomplete ones are flagged. |
-| `/wr nudge` | Daily reflection prompt: "What moved a needle today?" |
+| Mode | Claude Code | Claude App | What it does |
+|---|---|---|---|
+| Log | `/wr` or `/wr log` | "log a win" | Capture a new win. Prompts for any missing metrics. |
+| Resume | `/wr resume` | "show my resume bullets" | Format entries as resume bullets. |
+| Interview | `/wr interview` | "build my STAR stories" | Format entries as STAR interview stories. |
+| LinkedIn | `/wr linkedin` | "write a LinkedIn post" | Draft a LinkedIn post or weekly outcomes narrative. |
+| List | `/wr list` | "list my receipts" | Show all logged entries. Incomplete ones are flagged. |
+| Nudge | `/wr nudge` | "nudge me" | Daily reflection: "What moved a needle today?" |
 
 ## Setup
 
-### 1. Install Claude Code
+### Option A — Claude App (no install required)
 
-[Claude Code](https://claude.com/claude-code) is Anthropic's CLI for Claude. Install it and make sure you have an active Claude subscription.
+1. Open [Claude.ai](https://claude.ai) in your browser or the desktop app.
+2. Start a new conversation and paste the entire contents of `skill.md` as your first message, followed by: "You are now running in Work Receipts mode."
+3. Create a `work_receipts.yaml` file on your computer to store entries. Claude will tell you what to paste in.
+4. That's it — describe a win and it will walk you through logging it.
 
-### 2. Add the skill
+> **Tip:** Save this as a [Claude Project](https://claude.ai/projects) with `skill.md` as the project instructions so it's always ready without re-pasting.
 
-Copy the `WorkReceipts/` folder into your Claude skills directory:
+### Option B — Claude Code (slash command)
+
+[Claude Code](https://claude.com/claude-code) is Anthropic's CLI. This gives you the full `/wr` slash command experience.
+
+**1. Install Claude Code** and make sure you have an active Claude subscription.
+
+**2. Add the skill**
 
 ```bash
 cp -r WorkReceipts/ ~/.claude/skills/work-receipts/
 ```
 
-### 3. Create your receipts file
-
-Work Receipts stores everything locally. It never leaves your machine.
+**3. Create your receipts file**
 
 ```bash
 touch ~/work_receipts.yaml
@@ -51,7 +60,7 @@ touch ~/work_receipts.yaml
 
 You can put this anywhere — update the `RECEIPTS_FILE` path at the top of `skill.md` to match.
 
-### 4. Use it
+**4. Use it**
 
 In Claude Code, type `/wr` to start logging.
 
