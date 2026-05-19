@@ -1,0 +1,5 @@
+# Your personal receipts file — stays local, never commit
+work_receipts.yaml
+
+# macOS
+.DS_Store
