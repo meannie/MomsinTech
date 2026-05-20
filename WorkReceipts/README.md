@@ -185,4 +185,4 @@ Open source under MIT. PRs welcome.
 
 ---
 
-Built by [Annie Tsai](https://linkedin.com/in/annietsai) · Inspired by every laid-off tech worker who couldn't remember their own metrics.
+Built by [Annie Tsai](https://www.linkedin.com/in/meannietsai/) · Inspired by every laid-off tech worker who couldn't remember their own metrics.
