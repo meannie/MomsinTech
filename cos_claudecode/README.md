@@ -26,6 +26,18 @@ Three things:
 
 3. **It nags.** If you said you'd ship something three days ago and haven't, it tells you. With escalating intensity. Most personal productivity tools let things silently drop. This one doesn't.
 
+Once you've customized it to your life, it does things like:
+
+- Reminds you that your quarterly credit card benefit expires in 5 days before you lose it
+- Notices your Tuesday has 4 back-to-back meetings with no gaps and leads the briefing with that — not buried at the bottom
+- Flags when you've manually done the same type of task 3 times this month and suggests you build a skill to automate it
+- Logs a note you dictated on your iPhone during school pickup and surfaces it in your next morning briefing
+- Detects that you've been in a heavy calendar week with no deep work blocks and tells you Wednesday morning is your only real window — protect it
+- Remembers that you said you'd follow up with someone last Thursday and asks if you did
+- Runs your monthly business review automatically on the first Monday of the month without you having to remember
+- At the end of a long working session, synthesizes everything that was built and what's still open into the session log so the next conversation picks up where this one left off
+- Tracks the relationships that matter — flags when a key collaborator or friend has gone quiet for too long and prompts you to reach out before the relationship drifts
+
 ## Architecture
 
 ```
