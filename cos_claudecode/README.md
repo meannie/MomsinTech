@@ -88,6 +88,7 @@ See [SETUP.md](SETUP.md) for the full walkthrough. The short version:
 | [`RELIABILITY.md`](RELIABILITY.md) | Two non-obvious fixes that prevent /cos from giving you confidently wrong information |
 | [`SUBAGENTS.md`](SUBAGENTS.md) | Build COS subagent skills that share the session log (includes `/new-topic`) |
 | [`SLACK.md`](SLACK.md) | Optional: run /cos from Slack on your phone (Socket Mode bot — chat interface alternative) |
+| [`MSGVAULT.md`](MSGVAULT.md) | Optional: local email + iMessage archive for multi-account inbox scanning and relationship tracking |
 
 ### Scripts
 
@@ -96,11 +97,12 @@ See [SETUP.md](SETUP.md) for the full walkthrough. The short version:
 | [`scripts/gcal_sync.py`](scripts/gcal_sync.py) | Google Calendar → local JSON snapshot (read) |
 | [`scripts/tasks_sync.py`](scripts/tasks_sync.py) | Google Tasks → local JSON snapshot (read) |
 | [`scripts/tasks_add.py`](scripts/tasks_add.py) | Write tasks back to Google Tasks (separate write-scope OAuth token) |
-| [`scripts/inbox_drain.py`](scripts/inbox_drain.py) | Phone inbox → session log drain (reads GitHub Issue #1 comments) |
+| [`scripts/inbox_drain.py`](scripts/inbox_drain.py) | Phone inbox → session log drain (reads GitHub Issue comments; configure `phone_inbox.repo` in config.yaml — see PHONE_INBOX.md) |
 | [`scripts/sync_session_log.py`](scripts/sync_session_log.py) | Sync session_log.yaml between local /cos and a private GitHub repo (mobile + multi-device continuity) |
 | [`scripts/gdocs_push.py`](scripts/gdocs_push.py) | Markdown → Google Doc push (create new or update existing). Lets /cos write structured artifacts to Drive |
 | [`scripts/gmail_helper.py`](scripts/gmail_helper.py) | Optional: multi-account Gmail OAuth helper (search/read/send across accounts via `--account <name>` flag) |
 | [`scripts/cos_slack_bot.py`](scripts/cos_slack_bot.py) | Optional: /cos as a Slack bot for mobile access (see SLACK.md) |
+| [`scripts/imessage-sync.plist.template`](scripts/imessage-sync.plist.template) | Optional: launchd agent template for nightly iMessage import via msgvault (see MSGVAULT.md) |
 
 ### Skills
 

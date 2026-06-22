@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  imessage-sync.plist.template
+  launchd agent for nightly iMessage import via msgvault.
+
+  SETUP:
+  1. Replace all {{PLACEHOLDER}} values below with your paths.
+  2. Copy to ~/Library/LaunchAgents/com.msgvault.imessage-sync.plist
+  3. Load with: launchctl load ~/Library/LaunchAgents/com.msgvault.imessage-sync.plist
+  4. To test immediately: launchctl start com.msgvault.imessage-sync
+
+  PLACEHOLDERS:
+    {{MSGVAULT_BINARY_PATH}}  Path to the msgvault binary (e.g. /Users/yourname/.local/bin/msgvault)
+    {{CONTACTS_VCF_PATH}}     Path to your exported Contacts.vcf (e.g. /Users/yourname/Downloads/Contacts.vcf)
+    {{MSGVAULT_DATA_DIR}}     msgvault data dir (e.g. /Users/yourname/.msgvault)
+
+  CONTACTS.VCF:
+  Export from Contacts.app → File → Export → Export vCard.
+  Keep this file in a stable location (not Desktop/iCloud Drive — shell access is restricted there).
+  ~/Downloads/ works well.
+
+  PERMISSIONS:
+  The first run requires Full Disk Access for the terminal/launchd agent.
+  System Settings → Privacy & Security → Full Disk Access → add Terminal or the binary.
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.msgvault.imessage-sync</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>{{MSGVAULT_BINARY_PATH}}</string>
+        <string>import-imessage</string>
+        <string>--contacts</string>
+        <string>{{CONTACTS_VCF_PATH}}</string>
+    </array>
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>3</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+    <key>StandardOutPath</key>
+    <string>{{MSGVAULT_DATA_DIR}}/imessage-sync.log</string>
+    <key>StandardErrorPath</key>
+    <string>{{MSGVAULT_DATA_DIR}}/imessage-sync.log</string>
+</dict>
+</plist>

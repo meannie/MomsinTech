@@ -55,10 +55,15 @@ The bare minimum to fill in:
 - `{{USER_FIRST_NAME}}` — your name
 - `{{USER_CONTEXT_PARAGRAPH}}` — 2-3 sentences about who you are and what you do
 - `{{COS_DIR}}` — the absolute path to your cos directory (e.g., `/Users/jane/cos`)
+- `{{SYNC_REPO}}` — absolute path to your local clone of the private sync repo (e.g., `/Users/jane/personalCOS`)
 - `{{PROJECTS_DIR}}` — where your code/work projects live
 - `{{PEAK_HOURS}}`, `{{VALLEY_HOURS}}`, `{{FAMILY_HOURS}}`, `{{EVENING_HOURS}}` — your energy curve
+- `{{FAMILY_LOGISTICS_DESCRIPTION}}` — one sentence on family logistics (e.g., "school pickup at 3pm, fencing Tue/Thu")
+- `{{COFFEE_MEETING_DAYS}}` — which days of the week you allow coffee meetings (e.g., "Thursday or Friday")
+- `{{BLACKOUT_PERIODS}}` — recurring windows you want protected from scheduling (e.g., "competition weekends")
 - `{{TIMEZONE}}` — same as in config.yaml
 - `{{CALENDAR_LIST}}` — bulleted list of your calendars (see Step 4 for finding calendar IDs)
+- `{{KEY_RECURRING_MEETINGS}}` — one-line list of standing meetings Claude should know about
 - At least 3 entries under "Strategic Priorities"
 - At least 2 entries under "Relationship Tracking"
 

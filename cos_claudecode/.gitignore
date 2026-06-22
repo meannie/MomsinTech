@@ -7,6 +7,8 @@ gcal_token.json
 tasks_snapshot.json
 gcal_snapshot.json
 projects.yaml
+.github_pat
+.inbox_state.json
 
 # Python
 __pycache__/

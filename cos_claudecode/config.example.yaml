@@ -20,3 +20,9 @@ calendars:
   # Add as many as you want
   # - id: c_xxxxx@group.calendar.google.com
   #   label: Family
+
+# Phone inbox (optional — see PHONE_INBOX.md)
+# Enables the inbox_drain.py script to pull notes from your iPhone via a GitHub Issue.
+# phone_inbox:
+#   repo: "yourname/yourCOSrepo"  # private GitHub repo where Issue #1 is your inbox
+#   issue_number: 1               # issue number (default: 1)

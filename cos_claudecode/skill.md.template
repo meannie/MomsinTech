@@ -64,7 +64,7 @@ This skill can access Google Calendar and Gmail through **two paths**. The Googl
 | **Calendar — read events** | `mcp__claude_ai_Google_Calendar__list_events` | `python3 {{COS_DIR}}/gcal_sync.py` → read `gcal_snapshot.json` |
 | **Calendar — create events** | `mcp__claude_ai_Google_Calendar__create_event` | Not available locally — tell {{USER_FIRST_NAME}} to create manually |
 | **Calendar — list calendars** | `mcp__claude_ai_Google_Calendar__list_calendars` | Hardcoded calendar IDs below |
-| **Gmail — search inbox** | `mcp__claude_ai_Gmail__gmail_search_messages` | Not available locally |
+| **Gmail — search inbox (primary account only)** | `mcp__claude_ai_Gmail__gmail_search_messages` | Not available locally |
 | **Gmail — read message** | `mcp__claude_ai_Gmail__gmail_read_message` | Not available locally |
 | **Google Tasks** | *No MCP available* | `python3 {{COS_DIR}}/tasks_sync.py` → read `tasks_snapshot.json` (always) |
 
@@ -73,6 +73,27 @@ This skill can access Google Calendar and Gmail through **two paths**. The Googl
 **Do not mix paths in a single run.** If MCP is working, use it for all calendars. If falling back, sync once and read the snapshot for all.
 
 When using MCP tools, you must first load the tool schema via `ToolSearch` with `select:<tool_name>` before calling it — deferred tools fail without schema loading.
+
+> **Multi-account Gmail:** The Gmail MCP covers only the primary Google account. If you have additional Gmail, Workspace, or IMAP accounts and want `/cos` to scan them for event invites and inbox context, see [MSGVAULT.md](MSGVAULT.md) for the optional msgvault integration — it runs in parallel with the MCP, not as a fallback.
+
+<!-- OPTIONAL: msgvault multi-account inbox scanning
+     Remove this entire block if you only have one email account.
+     Setup: see MSGVAULT.md -->
+### Multi-Account Inbox Scanning (msgvault — optional)
+
+If msgvault is configured and running, run it **in parallel** with the Gmail MCP for event invite detection. The MCP covers the primary Gmail account; msgvault covers all additional accounts. Do not use one as a fallback for the other — run both every time.
+
+```bash
+# Search for event invites across all msgvault accounts (last 14 days)
+{{MSGVAULT_BINARY_PATH}} search \
+  "subject:(invitation OR invite OR \"you're invited\" OR RSVP OR \"join us\" OR calendar) OR from:(calendar-notification OR noreply@calendar)" \
+  --since 14d --format json 2>/dev/null
+```
+
+Merge results from both sources and deduplicate by subject + sender before composing the briefing. Prefer the MCP result when the same event appears in both. Flag any invite that requires an RSVP and doesn't have one.
+
+Replace `{{MSGVAULT_BINARY_PATH}}` with the path to your msgvault binary (e.g., `~/.local/bin/msgvault`).
+<!-- END OPTIONAL: msgvault -->
 
 ### 1. Session Log (ALWAYS read first)
 Read `{{COS_DIR}}/session_log.yaml` — this is your memory. It contains:
@@ -241,6 +262,22 @@ The session log at `{{COS_DIR}}/session_log.yaml` is append-only during a run. F
 
 ### Relationship Check-In
 [anyone from the relationship tracking list who's gone quiet or needs intentional investment this week]
+
+<!-- OPTIONAL: msgvault dropped-thread detection
+     Remove if you don't use msgvault or if all your key relationships communicate on Slack/chat.
+     Focus on personal and external contacts — skip internal team members whose primary channel isn't email. -->
+**Dropped threads (msgvault — optional):** For personal and external contacts, check for conversations that were active but fell off:
+
+```bash
+{{MSGVAULT_BINARY_PATH}} search \
+  "has:thread" \
+  --since 60d --until 30d --format json 2>/dev/null
+```
+
+Surface as: "You had a thread going with [person] about [topic] around [date] — it fell off. Worth picking back up?"
+
+Do NOT flag: {{INTERNAL_TEAM_LIST}} — they communicate on {{INTERNAL_TEAM_CHANNEL}}, not email. Only surface dropped threads with personal contacts and external collaborators.
+<!-- END OPTIONAL: msgvault dropped-thread detection -->
 
 ### Strategic Priority Pulse
 [one sentence per priority: what's moving, what's stuck, what needs attention. Flag any going dark.]

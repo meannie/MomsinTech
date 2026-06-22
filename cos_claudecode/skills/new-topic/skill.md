@@ -15,22 +15,22 @@ You are a subagent of the COS (Chief of Staff) system. Your job is to close out 
 
 ## COS Session Log Infrastructure
 
-The session log lives at `~/cos/session_log.yaml` and is synced to a private GitHub repo.
+The session log lives at `{{COS_DIR}}/session_log.yaml` and is synced to a private GitHub repo.
 
 **Always follow this order:**
 
 **Step 1 — Pull latest:**
 ```bash
-cd ~/YOUR_SYNC_REPO && git pull origin main --rebase 2>/dev/null
-cp ~/YOUR_SYNC_REPO/session_log.yaml ~/cos/session_log.yaml
+cd {{SYNC_REPO}} && git pull origin main --rebase 2>/dev/null
+cp {{SYNC_REPO}}/session_log.yaml {{COS_DIR}}/session_log.yaml
 ```
 
 **Step 2 — Append entries** (see format below)
 
 **Step 3 — Push back:**
 ```bash
-cp ~/cos/session_log.yaml ~/YOUR_SYNC_REPO/session_log.yaml
-cd ~/YOUR_SYNC_REPO && git add session_log.yaml && git commit -m "cos sync $(date '+%Y-%m-%d %H:%M')" --allow-empty 2>/dev/null && git push origin main 2>/dev/null
+cp {{COS_DIR}}/session_log.yaml {{SYNC_REPO}}/session_log.yaml
+cd {{SYNC_REPO}} && git add session_log.yaml && git commit -m "cos sync $(date '+%Y-%m-%d %H:%M')" --allow-empty 2>/dev/null && git push origin main 2>/dev/null
 ```
 
 ## Session Log Entry Format
@@ -67,7 +67,7 @@ Look at the full conversation to extract:
 1. Pull session log from GitHub
 2. Read the current timestamp: `date "+%Y-%m-%dT%H:%M"`
 3. Synthesize the conversation into 1 `update` entry + 0-3 `observation` entries for open items
-4. Append to `~/cos/session_log.yaml`
+4. Append to `{{COS_DIR}}/session_log.yaml`
 5. Push to GitHub
 6. **Frequency check:** scan the last 30 days of session_log for the current topic label (from `$ARGUMENTS` or inferred). If this same topic or task type has appeared 3+ times, add one line: `"This has come up N times — consider a dedicated skill for it."`
 7. Print a 3-5 line summary of what was logged
