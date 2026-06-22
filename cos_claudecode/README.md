@@ -38,6 +38,24 @@ Once you've customized it to your life, it does things like:
 - At the end of a long working session, synthesizes everything that was built and what's still open into the session log so the next conversation picks up where this one left off
 - Tracks the relationships that matter — flags when a key collaborator or friend has gone quiet for too long and prompts you to reach out before the relationship drifts
 
+## Email access tiers
+
+`/cos` can scan your inbox for event invites, action items, and relationship context. How much coverage you get depends on what you set up:
+
+| Tier | What you need | Coverage |
+|------|--------------|----------|
+| **1 — MCP only** | Gmail MCP connector in claude.ai | Primary Google account only |
+| **2 — API-driven multi-account** | `scripts/gmail_helper.py` + OAuth per account, or M365 via IMAP | Multiple Gmail/Workspace accounts + Microsoft 365 |
+| **3 — msgvault (local data store)** | msgvault binary + config (see MSGVAULT.md) | All accounts synced locally; iMessage history too |
+
+**Tier 1** is the default and requires no setup beyond connecting the Gmail MCP in claude.ai Settings → Connectors. It covers the primary Google account only — anything sent to a work, side-project, or secondary address won't be seen.
+
+**Tier 2** uses `scripts/gmail_helper.py` to issue OAuth-authenticated API calls across multiple accounts (each with its own token), and supports M365 / Outlook accounts via standard IMAP. Good for people who want multi-account coverage without running a local daemon. Requires setting up an OAuth client per account.
+
+**Tier 3 (msgvault)** runs a persistent local daemon that syncs all accounts on a schedule and stores everything in a SQLite database. `/cos` queries it with a single `msgvault search` command that searches across all accounts at once. Also imports iMessage history for personal relationship tracking. Best for people with 3+ accounts who want the most complete inbox picture and offline access. See [MSGVAULT.md](MSGVAULT.md) for setup.
+
+Tiers are complementary, not mutually exclusive. The most complete setup uses all three: MCP for live primary-account data, msgvault for full cross-account history. Tier 2 fills the gap if you want multi-account coverage without the daemon.
+
 ## Architecture
 
 ```
