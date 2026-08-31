@@ -2,7 +2,7 @@
 
 A personal Chief of Staff agent built as a Claude Code skill. Surfaces what needs your attention across all your projects, tasks, and calendar — and remembers what you said you'd do.
 
-Built and battle-tested by [Annie Tsai](https://annietsai.co) (COO, [Interact](https://tryinteract.com) and [Moms in Tech](https://momsintech.com)), open-sourced for the MinTs community.
+Built and battle-tested by [Annie Tsai](https://annietsai.co) (COO, [Moms in Tech](https://momsintech.com); builder, tinkerer — more at [annietsai.co](https://annietsai.co)), open-sourced for the MinTs community.
 
 ## Quick start
 
@@ -189,4 +189,4 @@ MIT
 
 ## Built by
 
-[Annie Tsai](https://annietsai.co) — COO at Interact, COO of Moms in Tech, columnist for the San Mateo Daily Journal. Built for her own use over 2026 Q1, then templatized for the MinTs community.
+[Annie Tsai](https://annietsai.co) — COO of Moms in Tech, builder, tinkerer, columnist for the San Mateo Daily Journal. Built for her own use over 2026 Q1, then templatized for the MinTs community.
