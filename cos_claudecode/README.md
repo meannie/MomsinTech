@@ -4,6 +4,17 @@ A personal Chief of Staff agent built as a Claude Code skill. Surfaces what need
 
 Built and battle-tested by [Annie Tsai](https://annietsai.co) (COO, [Interact](https://tryinteract.com) and [Moms in Tech](https://momsintech.com)), open-sourced for the MinTs community.
 
+## Quick start
+
+> Claude Code skills don't auto-run anything on install — there's no lifecycle hook for "the first time this is used." So after you install this skill, the one thing to do **before anything else** is run the onboarding interview yourself. Tell Claude:
+>
+> ```
+> Install this Claude Code skill: https://github.com/meannie/MomsinTech/tree/main/cos_claudecode
+> Then run /cos-onboard
+> ```
+>
+> `/cos-onboard` interviews you and writes your personalized `skill.md`, `config.yaml`, and `session_log.yaml` for you — see [SETUP.md](SETUP.md) for the full walkthrough (including the private-fork warning, which you should read first).
+
 ## What it does
 
 `/cos` is a slash command in [Claude Code](https://claude.com/claude-code) that runs in five modes:
