@@ -34,6 +34,24 @@ The more specific you are, the better. Include rules:
 - "Never schedule deep work on Mondays" (or whichever day is your meeting day)
 - "Travel days are reduced capacity — flag conflicts"
 
+### 1a. Transport / logistics windows
+
+A recurring drop-off-and-wait obligation (kid activity, appointment, errand you have to sit through) isn't dead time — it's a usable pocket the agent should surface, not just note as "busy."
+
+If you have a recurring commitment with a real gap in the middle (drop off, wait, pick up), tell the agent to mine it:
+
+```markdown
+**[Activity] transport = work window.** When [you] do [activity] drop-off/pickup, the time between them is usable — from the car, a nearby coffee shop, wherever. Treat it as: [drive time] + drop-off → [gap] min of available time (async work, email, errands, lighter tasks) → [drive time] + pickup. Flag this as a usable pocket in the schedule, especially for tasks that don't require a desk.
+```
+
+This only pays off if the agent can also tell when *you're* not the one doing the transport. If you share logistics with a partner/co-parent and use event color (or some other marker) on a shared calendar to signal who's driving, pair this with a rule like:
+
+```markdown
+When presenting logistics in briefings, only show transport events you're responsible for. If [partner] is handling a drop-off, don't list it as your commitment — just note "[partner] has it covered" so you know the window is free, but don't claim the *work* window for yourself unless you're the one driving.
+```
+
+Without that pairing, the agent will credit you with usable time from a window someone else is covering, which produces a schedule that looks free but isn't.
+
 ### 2. Strategic priorities
 
 5-7 things you actually care about for the year. Specific, not generic.

@@ -69,9 +69,57 @@ Look at the full conversation to extract:
 3. Synthesize the conversation into 1 `update` entry + 0-3 `observation` entries for open items
 4. Append to `{{COS_DIR}}/session_log.yaml`
 5. Push to GitHub
-6. **Frequency check:** scan the last 30 days of session_log for the current topic label (from `$ARGUMENTS` or inferred). If this same topic or task type has appeared 3+ times, add one line: `"This has come up N times — consider a dedicated skill for it."`
+6. **Frequency check + scaffold offer** (see below)
 7. Print a 3-5 line summary of what was logged
 8. End with: **"Session logged. You can now compact this conversation and start fresh."**
+
+## Frequency check + scaffold offer
+
+Don't just note that a pattern is recurring — offer to build the skill on the spot, right now, while it's top of mind. A line in a log that says "consider a dedicated skill" gets read once and never acted on.
+
+1. Scan the last 30 days of session_log for the current topic label (from `$ARGUMENTS` or inferred from conversation).
+2. If this same topic or task type has appeared **3+ times**, don't just log it — ask:
+
+   > "This has come up N times now — [brief description of the pattern]. Want me to scaffold a `/skill-name` skill for it right now?"
+
+   Use the actual `AskUserQuestion` tool if available in this context (in-conversation, not a detached background run) so the user can say yes/no/not-now in the same turn. If asking isn't possible in the current context, fall back to the passive log line instead of guessing at consent.
+3. **If yes:** create `.claude/skills/<skill-name>/skill.md` using the stub template below, filled in with what you actually know from the 3+ recurring instances (what triggers it, what steps were repeated, what files/commands were involved each time). This is a stub, not a finished skill — the goal is to remove the blank-page problem, not to guess at logic you don't have evidence for.
+4. **If no or not answered:** fall back to the old passive line in the printed summary: `"This has come up N times — consider a dedicated skill for it."` Don't ask again for the same topic within the same 30-day window — repeated asks about the same pattern are more annoying than the log line they're replacing.
+
+### Stub template
+
+```markdown
+---
+name: <skill-name>
+description: <one-line — what it does and when it fires>
+argument-hint: "[optional args]"
+allowed-tools: Bash, Read, Write
+---
+
+# <Skill Title>
+
+<!-- Scaffolded by /new-topic on {{DATE}} — this task/topic came up {{N}} times in the
+     last 30 days of the session log. This is a stub: the steps below are inferred
+     from what actually happened those N times, not guessed. Fill in and correct
+     before relying on it. -->
+
+## What this should do
+
+<one paragraph: the recurring task this replaces>
+
+## Steps
+
+1. <first step that repeated across occurrences>
+2. <second step>
+3. <...>
+
+## Source sessions
+
+session_log entries that prompted this scaffold:
+- <ts> — <note>
+- <ts> — <note>
+- <ts> — <note>
+```
 
 ## Example Output
 

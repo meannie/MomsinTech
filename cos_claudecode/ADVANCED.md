@@ -187,7 +187,7 @@ This is a starting menu. Pick what you actually use.
 
 ## Automation candidate detection
 
-COS can notice when you keep doing the same thing manually and suggest you build a skill for it. Two places to wire this in:
+COS can notice when you keep doing the same thing manually and suggest you build a skill for it. Two places to wire this in — and the per-session one should actually offer to build it, not just mention it.
 
 ### In `/cos review` — weekly sweep
 
@@ -207,23 +207,27 @@ Format:
 Skip if nothing repeats 3+ times. Don't suggest skills that already exist.
 ```
 
-This runs once a week as part of review — low noise, high signal.
+This runs once a week as part of review, surveying multiple topics at once — low noise, high signal, no per-item interruption. It's a list, not an offer: reading a weekly review that stops to ask "want me to build this?" for every candidate would be worse than the noise it's trying to reduce.
 
-### In `/new-topic` — per-session check
+### In `/new-topic` — proactive scaffold offer
 
-Add a frequency check step after appending to the session log:
+This is the higher-leverage version, because it fires on exactly one topic, at the exact moment it crosses the threshold, while you're already looking at what just happened. A passive log line here gets read once and forgotten — an active offer gets acted on while the context is still live.
+
+Add this after appending to the session log:
 
 ```markdown
-**Frequency check:** scan the last 30 days of session_log for the current topic label. If this topic or task type has appeared 3+ times, add one line to the output:
+**Frequency check + scaffold offer:** scan the last 30 days of session_log for the current topic label. If this topic or task type has appeared 3+ times, ask (via AskUserQuestion, in-conversation): "This has come up N times now — [pattern]. Want me to scaffold a `/skill-name` skill for it right now?"
 
-> "This has come up N times — consider a dedicated skill for it."
+If yes: write `.claude/skills/<skill-name>/skill.md` as a stub — frontmatter (name, description, argument-hint, allowed-tools) plus a "Steps" section inferred from what actually happened across the N occurrences (not guessed), plus a "Source sessions" list citing the session_log entries that justified the scaffold. Tell the user where it landed and that it's a stub to refine, not a finished skill.
+
+If no, or asking isn't possible in the current run context: fall back to the old passive line — "This has come up N times — consider a dedicated skill for it." Don't re-ask about the same topic within the same 30-day window.
 ```
 
-This fires immediately when the pattern crosses the threshold, without waiting for the weekly review.
+See [`skills/new-topic/skill.md`](skills/new-topic/skill.md) for the full worked version, including the stub template.
 
 ### Why two places
 
-The weekly review catches broad patterns across all topics. The per-session check catches a single topic crossing the threshold the moment it happens. Together they cover both "I didn't notice this was recurring" and "I just did this for the third time."
+The weekly review catches broad patterns across all topics, presented as a list to skim. The per-session check catches a single topic crossing the threshold the moment it happens, and turns that moment into an actual skill file instead of a note you'll scroll past later. Together they cover both "I didn't notice this was recurring" and "I just did this for the third time — build it now while I'm here."
 
 ---
 
