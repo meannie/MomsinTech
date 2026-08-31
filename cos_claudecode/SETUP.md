@@ -49,7 +49,11 @@ Delete the example entries. Leave the file empty (just the comments at the top).
 
 ## Step 3: Customize `skill.md.template` for you
 
-This is the most important step. Open `skill.md.template` and find every `{{PLACEHOLDER}}` token.
+This is the most important step, and you have two ways to do it:
+
+> **Recommended: let `/cos-onboard` do it for you.** Install `skills/onboarding/skill.md` into Claude Code the same way you'll install `cos` itself (see Step 5 below, do this one first), then run `/cos-onboard`. It interviews you — batched, conversational questions, not a wall of blanks to fill — and writes a fully substituted `skill.md`, `config.yaml`, and `session_log.yaml` directly. It also pulls your actual calendar list via MCP instead of asking you to hand-copy IDs. Skip the rest of this step if you use it, and go straight to Step 4.
+
+The manual path — open `skill.md.template` and find every `{{PLACEHOLDER}}` token yourself:
 
 The bare minimum to fill in:
 - `{{USER_FIRST_NAME}}` — your name

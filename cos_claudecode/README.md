@@ -124,6 +124,7 @@ See [SETUP.md](SETUP.md) for the full walkthrough. The short version:
 
 | File | What it does |
 |------|-----------|
+| [`skills/onboarding/skill.md`](skills/onboarding/skill.md) | `/cos-onboard` — interviews you and self-configures `skill.md`, `config.yaml`, and `session_log.yaml` from the template. Run this first — see Step 3 in [SETUP.md](SETUP.md) |
 | [`skills/new-topic/skill.md`](skills/new-topic/skill.md) | `/new-topic` subagent — log session status to COS and compact conversation (see SUBAGENTS.md) |
 
 ### Config + setup
@@ -142,6 +143,7 @@ See [SETUP.md](SETUP.md) for the full walkthrough. The short version:
 
 ## New in this release
 
+- **[`skills/onboarding/skill.md`](skills/onboarding/skill.md)** — `/cos-onboard` interviews you (batched, conversational, not a wall of placeholders) and writes the fully personalized `skill.md`, `config.yaml`, and `session_log.yaml` for you, pulling your real calendar list via MCP instead of asking you to hand-copy IDs. Replaces the old manual find-and-replace in Step 3 of [SETUP.md](SETUP.md).
 - **[RELIABILITY.md](RELIABILITY.md)** — Two production-discovered fixes: the authoritative `date` shell command (prevents wrong-day-of-week briefings) and the session log ordering constraint (prevents data loss when using phone inbox)
 - **[PHONE_INBOX.md](PHONE_INBOX.md)** — Log tasks and notes from your iPhone via an iOS Shortcut + GitHub Issue drain. No server, no bot. Step-by-step Shortcut setup included.
 - **[SUBAGENTS.md](SUBAGENTS.md)** — Pattern for building COS subagent skills. Includes `/new-topic`: run it at end of a session to synthesize what was done, write it to the session log, and signal the conversation is ready to compact.
