@@ -2,12 +2,9 @@
 
 Run /cos directly from your phone — same skill, same session log, no middleman bot.
 
-This is one of two mobile patterns this template supports:
+This doc covers GitHub-sync mobile: your phone runs Claude Code directly against a synced copy of your /cos directory, giving you full /cos behavior (all modes, full skill instructions) on your phone.
 
-1. **GitHub-sync mobile (this doc)** — Your phone runs Claude Code directly against a synced copy of your /cos directory. Best when you want full /cos behavior (all modes, full skill instructions) on your phone.
-2. **Slack bot mobile** ([SLACK.md](SLACK.md)) — Your phone uses Slack to talk to a bot running on your always-on machine. Best when you want a chat-style interface and don't need Claude Code on your phone.
-
-You can run both simultaneously. They share the same `session_log.yaml`.
+(A Slack-bot chat-interface alternative previously lived here — removed for now, may return later.)
 
 ---
 

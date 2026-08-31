@@ -270,7 +270,7 @@ This skill can access Google Calendar and Gmail through two paths:
 |---------|---------------------|----------------|
 | **Calendar — read events** | `mcp__claude_ai_Google_Calendar__list_events` | `python3 ~/cos/gcal_sync.py` → read `gcal_snapshot.json` |
 | **Calendar — create events** | `mcp__claude_ai_Google_Calendar__create_event` | Not available locally |
-| **Gmail — search inbox** | `mcp__claude_ai_Gmail__gmail_search_messages` | Not available locally — skip inbox scanning |
+| **Gmail — search inbox** | `mcp__claude_ai_Gmail__search_threads` | Not available locally — skip inbox scanning |
 | **Google Tasks** | *No MCP available* | `python3 ~/cos/tasks_sync.py` → read `tasks_snapshot.json` (always) |
 
 **Detection logic:** At the start of every `/cos` run, try MCP first. If it succeeds, use MCP for all calendar operations in this run. If it fails (not connected, auth error), fall back to local sync scripts.

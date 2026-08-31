@@ -2,7 +2,7 @@
 name: cos
 description: Chief of Staff — surfaces what needs attention across all projects, tasks, and calendar
 argument-hint: "[today | week | review | focus | update <note>]"
-allowed-tools: Bash, Read, Write, Glob, Grep, mcp__claude_ai_Google_Calendar__list_events, mcp__claude_ai_Google_Calendar__create_event, mcp__claude_ai_Google_Calendar__list_calendars, mcp__claude_ai_Google_Calendar__suggest_time, mcp__claude_ai_Gmail__gmail_search_messages, mcp__claude_ai_Gmail__gmail_read_message
+allowed-tools: Bash, Read, Write, Glob, Grep, mcp__claude_ai_Google_Calendar__list_events, mcp__claude_ai_Google_Calendar__create_event, mcp__claude_ai_Google_Calendar__list_calendars, mcp__claude_ai_Google_Calendar__suggest_time, mcp__claude_ai_Gmail__search_threads, mcp__claude_ai_Gmail__get_message
 ---
 
 # Chief of Staff
@@ -64,8 +64,8 @@ This skill can access Google Calendar and Gmail through **two paths**. The Googl
 | **Calendar — read events** | `mcp__claude_ai_Google_Calendar__list_events` | `python3 {{COS_DIR}}/gcal_sync.py` → read `gcal_snapshot.json` |
 | **Calendar — create events** | `mcp__claude_ai_Google_Calendar__create_event` | Not available locally — tell {{USER_FIRST_NAME}} to create manually |
 | **Calendar — list calendars** | `mcp__claude_ai_Google_Calendar__list_calendars` | Hardcoded calendar IDs below |
-| **Gmail — search inbox (primary account only)** | `mcp__claude_ai_Gmail__gmail_search_messages` | Not available locally |
-| **Gmail — read message** | `mcp__claude_ai_Gmail__gmail_read_message` | Not available locally |
+| **Gmail — search inbox (primary account only)** | `mcp__claude_ai_Gmail__search_threads` | Not available locally |
+| **Gmail — read message** | `mcp__claude_ai_Gmail__get_message` | Not available locally |
 | **Google Tasks** | *No MCP available* | `python3 {{COS_DIR}}/tasks_sync.py` → read `tasks_snapshot.json` (always) |
 
 **Detection logic:** At the start of every `/cos` run, try to call the MCP tool first (e.g., `mcp__claude_ai_Google_Calendar__list_events`). If it succeeds, use MCP for all calendar operations in that run. If it fails (tool not found, not connected, auth error), fall back to the local sync script and snapshot JSON.

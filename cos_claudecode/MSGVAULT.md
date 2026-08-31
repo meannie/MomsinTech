@@ -8,7 +8,7 @@ msgvault is a local email and iMessage archive tool. This page explains why it's
 
 ## Why msgvault complements the Gmail MCP
 
-The Gmail MCP connector (`mcp__claude_ai_Gmail__gmail_search_messages`) covers **only the primary Google account** connected to your claude.ai session. If you have additional Gmail accounts, Workspace accounts, or IMAP accounts (Outlook, iCloud, etc.), the MCP can't reach them.
+The Gmail MCP connector (`mcp__claude_ai_Gmail__search_threads`) covers **only the primary Google account** connected to your claude.ai session. If you have additional Gmail accounts, Workspace accounts, or IMAP accounts (Outlook, iCloud, etc.), the MCP can't reach them.
 
 msgvault fills this gap:
 - Syncs all your email accounts (any mix of Gmail OAuth + IMAP) to a local SQLite database

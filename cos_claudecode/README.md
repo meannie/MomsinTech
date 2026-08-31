@@ -105,7 +105,6 @@ See [SETUP.md](SETUP.md) for the full walkthrough. The short version:
 | [`PHONE_INBOX.md`](PHONE_INBOX.md) | Log anything from your iPhone via a Shortcut → GitHub Issue → session log drain |
 | [`RELIABILITY.md`](RELIABILITY.md) | Two non-obvious fixes that prevent /cos from giving you confidently wrong information |
 | [`SUBAGENTS.md`](SUBAGENTS.md) | Build COS subagent skills that share the session log (includes `/new-topic`) |
-| [`SLACK.md`](SLACK.md) | Optional: run /cos from Slack on your phone (Socket Mode bot — chat interface alternative) |
 | [`MSGVAULT.md`](MSGVAULT.md) | Optional: local email + iMessage archive for multi-account inbox scanning and relationship tracking |
 
 ### Scripts
@@ -119,7 +118,6 @@ See [SETUP.md](SETUP.md) for the full walkthrough. The short version:
 | [`scripts/sync_session_log.py`](scripts/sync_session_log.py) | Sync session_log.yaml between local /cos and a private GitHub repo (mobile + multi-device continuity) |
 | [`scripts/gdocs_push.py`](scripts/gdocs_push.py) | Markdown → Google Doc push (create new or update existing). Lets /cos write structured artifacts to Drive |
 | [`scripts/gmail_helper.py`](scripts/gmail_helper.py) | Optional: multi-account Gmail OAuth helper (search/read/send across accounts via `--account <name>` flag) |
-| [`scripts/cos_slack_bot.py`](scripts/cos_slack_bot.py) | Optional: /cos as a Slack bot for mobile access (see SLACK.md) |
 | [`scripts/imessage-sync.plist.template`](scripts/imessage-sync.plist.template) | Optional: launchd agent template for nightly iMessage import via msgvault (see MSGVAULT.md) |
 
 ### Skills
@@ -167,8 +165,6 @@ See [ADVANCED.md](ADVANCED.md) for the multi-skill chain pattern, congestion det
 See [PHONE_INBOX.md](PHONE_INBOX.md) for logging from your iPhone — full step-by-step iOS Shortcut setup included. No server required.
 
 See [MOBILE.md](MOBILE.md) for direct mobile access — full /cos on your phone via a private GitHub-synced sync repo. Updates from your phone show up on your laptop and vice versa; both devices read the same session log and snapshots.
-
-See [SLACK.md](SLACK.md) for the optional Slack bot — same /cos, reachable from your phone via Slack DM if you prefer a chat-style interface.
 
 See [SUBAGENTS.md](SUBAGENTS.md) for the `/new-topic` skill and the general pattern for building COS subagents — skills that share the session log infrastructure for specific handoffs and transitions.
 
