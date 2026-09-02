@@ -108,4 +108,12 @@ WorkReceipts/
 
 Contributions are welcome, especially examples representing overlooked work, different roles, career breaks, accessibility needs, and nontraditional career paths. Examples must be fictionalized and contain no employer, customer, or personal secrets.
 
+After changing `SKILL.md`, `references/`, `assets/`, or the plugin manifest, run:
+
+```bash
+./scripts/package.sh
+```
+
+The Package Work Receipts GitHub Action runs the same builder on `main`, validates both archives, and commits refreshed ZIPs when their contents change.
+
 Open source under the [MIT License](LICENSE).

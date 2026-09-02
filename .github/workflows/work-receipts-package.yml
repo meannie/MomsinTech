@@ -1,0 +1,71 @@
+name: Package Work Receipts
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "WorkReceipts/SKILL.md"
+      - "WorkReceipts/assets/**"
+      - "WorkReceipts/references/**"
+      - "WorkReceipts/plugin/work-receipts/.codex-plugin/plugin.json"
+      - "WorkReceipts/scripts/package.sh"
+      - ".github/workflows/work-receipts-package.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: work-receipts-package-main
+  cancel-in-progress: false
+
+jobs:
+  package:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Build skill and plugin packages
+        run: ./WorkReceipts/scripts/package.sh
+
+      - name: Validate packages
+        run: |
+          cmp WorkReceipts/SKILL.md WorkReceipts/plugin/work-receipts/skills/work-receipts/SKILL.md
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from zipfile import ZipFile
+
+          root = Path("WorkReceipts")
+          manifest = root / "plugin/work-receipts/.codex-plugin/plugin.json"
+          data = json.loads(manifest.read_text())
+          assert data["name"] == "work-receipts"
+          assert data["skills"] == "./skills/"
+
+          expected = {
+              "dist/work-receipts.zip": "work-receipts/SKILL.md",
+              "dist/work-receipts-chatgpt-plugin.zip":
+                  "work-receipts/.codex-plugin/plugin.json",
+          }
+          for relative_zip, required_file in expected.items():
+              with ZipFile(root / relative_zip) as archive:
+                  names = set(archive.namelist())
+                  assert required_file in names
+                  assert not any("__MACOSX" in name for name in names)
+          PY
+
+      - name: Commit refreshed packages
+        run: |
+          if git diff --quiet; then
+            echo "Packages are already current."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add WorkReceipts/dist WorkReceipts/plugin/work-receipts/skills
+          git commit -m "chore: refresh Work Receipts packages"
+          git push
