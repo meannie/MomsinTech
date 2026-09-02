@@ -4,7 +4,7 @@ Work Receipts is an open-source AI skill that helps people capture evidence of t
 
 It records measurable outcomes **and** the work traditional achievement trackers miss: risk prevented, decisions unblocked, customer learning, team enablement, operational resilience, mentorship, and community impact.
 
-Built by [Annie Tsai](https://annietsai.co) with [Moms in Tech](https://momsintech.com).
+Built by [Annie Tsai](https://annietsai.co) for [Moms in Tech](https://momsintech.com).
 
 ## Start here
 
