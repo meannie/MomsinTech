@@ -47,7 +47,9 @@ Code execution and file creation must be enabled for Claude Skills.
 
 ### ChatGPT and Codex
 
-Standalone skills work in the ChatGPT desktop app's Codex experience, Codex CLI, and the IDE extension. For regular ChatGPT chat on web, desktop, or mobile, Work Receipts will be distributed through a plugin containing this same skill.
+Standalone skills work in the ChatGPT desktop app's Codex experience, Codex CLI, and the IDE extension.
+
+For regular ChatGPT chat on web, desktop, or mobile, Work Receipts is packaged as a plugin containing the same skill. The [plugin package](dist/work-receipts-chatgpt-plugin.zip) is ready for testing and directory submission; users will install the published version from ChatGPT's plugin directory rather than uploading this ZIP directly.
 
 If your AI app does not support skills, create a Project or equivalent workspace and add `SKILL.md` as its instructions. Also add `assets/starter-vault.md`, renamed to `work-receipts.md`, as project knowledge.
 
@@ -81,6 +83,13 @@ WorkReceipts/
 ├── SKILL.md
 ├── README.md
 ├── LICENSE
+├── dist/
+│   ├── work-receipts.zip
+│   └── work-receipts-chatgpt-plugin.zip
+├── plugin/
+│   └── work-receipts/
+│       ├── .codex-plugin/plugin.json
+│       └── skills/work-receipts/
 ├── assets/
 │   └── starter-vault.md
 ├── examples/
