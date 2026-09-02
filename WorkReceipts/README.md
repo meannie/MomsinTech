@@ -39,7 +39,11 @@ The assistant will turn the conversation into a draft receipt, show it to you fo
 
 ### Claude
 
-Upload the skill ZIP in **Customize → Skills**, enable it, and type “Help me capture a work receipt.” Code execution and file creation must be enabled for Claude Skills.
+1. [Download `work-receipts.zip`](dist/work-receipts.zip).
+2. In Claude, open **Customize → Skills** and upload the ZIP.
+3. Enable the skill and type: “Help me capture a work receipt.”
+
+Code execution and file creation must be enabled for Claude Skills.
 
 ### ChatGPT and Codex
 
