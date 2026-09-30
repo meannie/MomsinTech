@@ -154,6 +154,7 @@ See [SETUP.md](SETUP.md) for the full walkthrough. The short version:
 
 ## New in this release
 
+- **[Chief of Staff Board](../ChiefOfStaffBoard)**: a companion dashboard published as a private Claude Artifact. It shows strategies grouped by area with Decide / Do / Done lanes, an activity heatmap, and buttons that leave notes /cos applies on its next run. One copy-paste prompt builds it.
 - **[`skills/onboarding/skill.md`](skills/onboarding/skill.md)** — `/cos-onboard` interviews you (batched, conversational, not a wall of placeholders) and writes the fully personalized `skill.md`, `config.yaml`, and `session_log.yaml` for you, pulling your real calendar list via MCP instead of asking you to hand-copy IDs. Replaces the old manual find-and-replace in Step 3 of [SETUP.md](SETUP.md).
 - **[RELIABILITY.md](RELIABILITY.md)** — Two production-discovered fixes: the authoritative `date` shell command (prevents wrong-day-of-week briefings) and the session log ordering constraint (prevents data loss when using phone inbox)
 - **[PHONE_INBOX.md](PHONE_INBOX.md)** — Log tasks and notes from your iPhone via an iOS Shortcut + GitHub Issue drain. No server, no bot. Step-by-step Shortcut setup included.
