@@ -10,7 +10,7 @@ inboxes:
 
 modules:                            # off | shadow | live  (new modules start in shadow)
   triage: shadow
-  approvals: shadow
+  approvals: live                   # acts only on your explicit YES, so it starts live
   meeting_prep: shadow
 
 triage:

@@ -84,6 +84,10 @@ Once confirmed:
 4. If `{{COS_DIR}}/session_log.yaml` doesn't already exist, copy `session_log.example.yaml` to it as an empty starter. If it already exists (a re-run), leave it untouched.
 5. Print what was written and where, and the immediate next steps: connect the Google Calendar/Gmail MCP connectors if not already connected (claude.ai Settings → Connectors), then run `/cos today` to confirm it works end to end.
 
+### 10. Offer part 2: the agentic layer
+
+After part 1 is written, offer (one yes/no) to set up the agentic layer in `../agentic_cos`: mail sorted overnight, meeting prep packets, and yes/no approvals by email, Instinct text or Telegram, running on a schedule. If yes, read `agentic_cos/AGENT_START.md` and follow it; its interview (`agentic_cos/INTERVIEW.md`) reuses everything collected above instead of asking again. If no, mention it can be added later with "set up the agentic layer".
+
 ## Re-running
 
 If `~/.claude/skills/cos/skill.md` already exists, say so up front and ask whether this is a full re-interview (regenerate everything) or a targeted update (e.g. "just add a new strategic priority" or "add a relationship"). For a targeted update, read the existing skill.md, make the specific edit requested, and skip the rest of the interview — don't force a full re-run for a one-line change.

@@ -154,6 +154,7 @@ See [SETUP.md](SETUP.md) for the full walkthrough. The short version:
 
 ## New in this release
 
+- **[Agentic Chief of Staff](../agentic_cos)**: an add-on that runs on a schedule. It sorts Gmail and Microsoft 365 mail overnight (label and archive only), sends meeting prep packets, and asks yes/no questions by email, Instinct text or Telegram before it acts. Every module starts in a trial mode that only reports. Set it up with `/cos-onboard` part 2.
 - **[Chief of Staff Board](../ChiefOfStaffBoard)**: a companion dashboard published as a private Claude Artifact. It shows strategies grouped by area with Decide / Do / Done lanes, an activity heatmap, and buttons that leave notes /cos applies on its next run. One copy-paste prompt builds it.
 - **[`skills/onboarding/skill.md`](skills/onboarding/skill.md)** — `/cos-onboard` interviews you (batched, conversational, not a wall of placeholders) and writes the fully personalized `skill.md`, `config.yaml`, and `session_log.yaml` for you, pulling your real calendar list via MCP instead of asking you to hand-copy IDs. Replaces the old manual find-and-replace in Step 3 of [SETUP.md](SETUP.md).
 - **[RELIABILITY.md](RELIABILITY.md)** — Two production-discovered fixes: the authoritative `date` shell command (prevents wrong-day-of-week briefings) and the session log ordering constraint (prevents data loss when using phone inbox)

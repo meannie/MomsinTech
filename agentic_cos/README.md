@@ -1,8 +1,10 @@
 # Agentic Chief of Staff
 
-An add-on to [`cos_claudecode`](../cos_claudecode) that runs on its own: it sorts your mail overnight, preps you for meetings, briefs you in the morning, and asks your permission by email, Instinct text or Telegram before it acts.
+An add-on to [`cos_claudecode`](../cos_claudecode) that runs on its own: it sorts your mail overnight, preps you for meetings, and asks your permission by email, Instinct text or Telegram before it acts.
 
-> **Status: work in progress.** The tested core is here (mail triage, the approval loop, meeting prep collection, the job runner). The interview, install guide and design notes come next. Don't install it yet unless you're comfortable reading code.
+> **Status: early release.** Mail triage, approvals, meeting prep and the job runner are built and tested without real accounts. The morning briefing still comes from running `/cos` yourself. See [DESIGN.md](DESIGN.md) for what's not built yet.
+
+**To set it up,** open Claude Code in this repo and say "set up the agentic layer" (or run `/cos-onboard` and say yes to part 2). Claude reads [AGENT_START.md](AGENT_START.md), interviews you ([INTERVIEW.md](INTERVIEW.md)) and walks you through [INSTALL.md](INSTALL.md). About an hour; no terminal experience needed.
 
 ## What it never does
 
@@ -20,6 +22,7 @@ An add-on to [`cos_claudecode`](../cos_claudecode) that runs on its own: it sort
 | `acos/approvals/` | Sends a yes/no question with a one-time code; acts only on a verified reply from you, in the same thread, within 24 hours, and only from a short allowlist (record a note, add a task). |
 | `acos/meetings.py` | Picks meetings that need prep (outside attendees, or keywords you choose) and gathers recent threads and notes for a prep packet. |
 | `acos/deliver.py` | Sends briefings to your inbox and short alerts through your channel. |
+| `acos/schedule.py`, `acos/telegram_setup.py` | Install helpers: write the scheduler files; find your Telegram chat. |
 | `runner/run_job.sh` | Runs one job: one at a time, logged, off / shadow / live modes, trial-run and once-per-period guards. |
 | `runner/schedulers/` | launchd, cron and systemd templates. |
 | `templates/config.example.yaml` | The settings the interview fills in (all example values). |
