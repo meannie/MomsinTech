@@ -147,6 +147,7 @@ Each morning, skim the report with Claude and correct anything wrong, like "that
 | --- | --- |
 | No report this morning | The laptop slept or was off. Check step 6's sleep setting. The next run catches up on the last 2 days. |
 | "isn't connected or the sign-in expired" | Run `acos.auth connect <inbox>` again. Personal Gmail expiring weekly means step 3's **Publish app** was skipped. |
+| The test ask never showed up (email channel) | It's an email from you to you, and some mail apps fold those into Sent. Search for "Ask" plus the code. To avoid it, set `channel.send_from` to a different connected inbox than the one you read. |
 | An approval reply did nothing | It has to be YES or NO plus the exact code, sent within 24 hours, in reply to the ask. `approvals.cli list` shows each ask's status. |
 | Briefing or packet went to spam | Mark it "not spam" once. It comes from your own address. |
 | Something got archived that shouldn't have | Find it under its COS label and move it back. Tell Claude the sender so the rule is fixed. |

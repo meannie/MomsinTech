@@ -175,7 +175,7 @@ def main() -> None:
 
     if not packets:
         return
-    out = state / f"{a.window}_{now:%Y%m%d_%H%M}.json"
+    out = state / f"{a.window}_{now.astimezone():%Y%m%d_%H%M}.json"
     out.write_text(json.dumps({"window": a.window, "generated": now.isoformat(), "meetings": packets}, indent=1))
     done_file.write_text(json.dumps(sorted(done)[-1000:]))
     print(out)
