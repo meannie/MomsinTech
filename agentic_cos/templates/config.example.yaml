@@ -1,0 +1,44 @@
+# Written by the interview to local/config.yaml. Every value here is invented.
+user:
+  name: Sam
+  address: sam@example.com          # briefings and email approvals go here
+timezone: America/Chicago
+
+inboxes:
+  - {id: personal, provider: gmail, address: sam@example.com}
+  - {id: work, provider: m365, address: sam@work.example.org}
+
+modules:                            # off | shadow | live  (new modules start in shadow)
+  triage: shadow
+  approvals: shadow
+  meeting_prep: shadow
+
+triage:
+  days: 2
+  label_prefix: COS
+  keep_visible_domains: [kidsclub.example]       # a newsletter you still read
+  always_needs_you_domains: [school.example]     # always needs you
+  vendor_domains: []                             # automated senders that look like people
+  protected_labels: [Keep]                       # never archived
+  keep_newest_insurance: true
+  archive: {receipts: true, newsletters: true, notifications: true}
+
+channel:
+  type: email                       # email | instinct | telegram
+  send_from: personal               # a connected Gmail inbox (email and instinct)
+  # assistant_address: sam@assistant.example     # instinct: your assistant's address
+  # chat_id: 123456789                           # telegram: learned during setup
+
+approvals:
+  allowed_actions: [note, task_add]
+  expiry_hours: 24
+  code_length: 3
+
+meetings:
+  calendars:
+    - {inbox: personal, id: primary}
+    - {inbox: work, id: default}
+  important_keywords: [board, interview]
+  skip_keywords: [focus, hold, block, lunch]
+  notes_dirs: ["~/notes"]
+  lookback_days: 180

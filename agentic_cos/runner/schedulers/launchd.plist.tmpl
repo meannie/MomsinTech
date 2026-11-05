@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- One file per job, saved as ~/Library/LaunchAgents/<LABEL>.plist, then: launchctl load <that file>
+     <SCHEDULE> is either <key>StartInterval</key><integer>300</integer>
+     or <key>StartCalendarInterval</key><dict><key>Hour</key><integer>23</integer><key>Minute</key><integer>0</integer></dict> -->
+<plist version="1.0">
+<dict>
+  <key>Label</key><string><LABEL></string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string><ROOT>/runner/run_job.sh</string>
+    <string><JOB></string>
+  </array>
+  <SCHEDULE>
+  <key>RunAtLoad</key><false/>
+</dict>
+</plist>

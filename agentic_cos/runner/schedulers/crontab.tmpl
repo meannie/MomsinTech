@@ -1,0 +1,5 @@
+# Linux or any machine with cron. Install with: crontab -e, then paste and replace <ROOT>.
+*/5 * * * *  <ROOT>/runner/run_job.sh approvals
+0 23 * * *   <ROOT>/runner/run_job.sh triage
+0 19 * * *   <ROOT>/runner/run_job.sh meeting_prep_evening --once day
+*/15 * * * * <ROOT>/runner/run_job.sh meeting_prep_soon

@@ -1,0 +1,19 @@
+# ~/.config/systemd/user/acos-<JOB>.service
+[Unit]
+Description=agentic COS job <JOB>
+
+[Service]
+Type=oneshot
+ExecStart=<ROOT>/runner/run_job.sh <JOB>
+
+# ~/.config/systemd/user/acos-<JOB>.timer
+[Unit]
+Description=Run agentic COS job <JOB>
+
+[Timer]
+OnCalendar=<ONCALENDAR>
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+# then: systemctl --user enable --now acos-<JOB>.timer
